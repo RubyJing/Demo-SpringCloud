@@ -12,11 +12,20 @@
     <description>Demo project for Spring Cloud</description>
 
     <modules>
+        <!-- 中心模块：注册中心eureka,消息总线bus,动态刷新配置文件config -->
         <module>center</module>
+        <!-- 中心包，非服务 -->
         <module>common</module>
         <module>webapps</module>
         <module>demos</module>
+        <!-- 监控模块:hystrix-dashboard仪表盘，turbine集群监控 -->
         <module>monitor</module>
+        <!-- 认证安全模块:authentication-server签权，authorization-server授权 -->
+        <module>oauth</module>
+        <!-- 网关模块:gateway-admin用于网关管理,gateway-web网关 -->
+        <module>gateway</module>
+        <!-- 系统管理模块 -->
+        <module>sysadmin</module>
     </modules>
 
     <dependencyManagement>

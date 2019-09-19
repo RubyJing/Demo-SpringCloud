@@ -49,9 +49,9 @@ public class ClassController {
         return Result.success(hello);
     }
 
-    @GetMapping
-    public Result testToDemo2(String hello2){
-        log.info("testToDemo2 message:{}"+hello2);
-        return Result.success(helloToDemoService.helloToDemo(hello2));
-    }
+//    @GetMapping
+//    public Result testToDemo2(String hello2){
+//        log.info("testToDemo2 message:{}"+hello2);
+//        return Result.success(helloToDemoService.helloToDemo(hello2));
+//    }
 }

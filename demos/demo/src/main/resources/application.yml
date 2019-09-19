@@ -8,22 +8,22 @@ eureka:
 
 spring:
   rabbitmq:
-    host: ${RABBIT_MQ_HOST:localhost}
+    host: ${RABBIT_MQ_HOST:198.13.45.205}
     port: ${RABBIT_MQ_PORT:5672}
-    username: ${RABBIT_MQ_USERNAME:guest}
-    password: ${RABBIT_MQ_PASSWORD:guest}
+    username: ${RABBIT_MQ_USERNAME:jean}
+    password: ${RABBIT_MQ_PASSWORD:123456}
   redis:
     host: ${REDIS_HOST:198.13.45.205}
     port: ${REDIS_PORT:6379}
     lettuce:
       pool:
         max-active: 300
-   # password: ${REDIS_PASSWORD:56155481}
+    password: ${REDIS_PASSWORD:56155481}
   datasource:
     url: jdbc:${DATASOURCE_DB:mysql}://${DATASOURCE_HOST:198.13.45.205}:${DATASOURCE_PORT:3306}/springCloud
     username: ${DATASOURCE_USERNAME:root}
     password: ${DATASOURCE_PASSWORD:zjp123}
-    driver-class-name: ${DATASOURCE_DRIVER:com.mysql.jdbc.Driver}
+    driver-class-name: ${DATASOURCE_DRIVER:com.mysql.cj.jdbc.Driver}
 
   zipkin:
     enabled: true
@@ -62,7 +62,7 @@ management:
     web:
       exposure:
         include: '*'
-
+#自动下划线驼峰转换
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

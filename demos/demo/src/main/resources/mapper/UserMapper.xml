@@ -42,4 +42,5 @@
         FROM test_user
         <include refid="Base_Where_Condition"/>
     </select>
+
 </mapper>
