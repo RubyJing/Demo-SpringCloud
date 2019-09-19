@@ -1,0 +1,49 @@
+server:
+  port: 8445
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_ZONE_HOST:localhost}:${EUREKA_ZONE_PORT:8761}/eureka/
+
+spring:
+  application:
+    name: gateway-admin
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:198.13.45.205}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USERNAME:jean}
+    password: ${RABBIT_MQ_PASSWORD:123456}
+  redis:
+    host: ${REDIS_HOST:198.13.45.205}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:56155481}
+  datasource:
+    url: jdbc:${DATASOURCE_DB:mysql}://${DATASOURCE_HOST:198.13.45.205}:${DATASOURCE_PORT:3306}/springCloud
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:zjp123}
+    driver-class-name: ${DATASOURCE_DRIVER:com.mysql.cj.jdbc.Driver}
+
+  zipkin:
+    enabled: true
+    sender:
+      type: rabbit
+  sleuth:
+    enabled: true
+    http:
+      legacy:
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    com.springboot.cloud.gateway: debug
+    com.jalja.org.spring: debug
+  path: logs/
+  file:
+    max-size: 1GB
