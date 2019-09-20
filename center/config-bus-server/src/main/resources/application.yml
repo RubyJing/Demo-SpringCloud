@@ -10,7 +10,7 @@ eureka:
 
 spring:
   application:
-    name: config-server
+    name: config-bus-server
   rabbitmq:
     host: ${RABBIT_MQ_HOST:198.13.45.205}
     port: ${RABBIT_MQ_PORT:5672}
@@ -21,13 +21,17 @@ spring:
       server:
         git:
           uri: https://github.com/RubyJing/SpringCloudConfigExample
-          searchPaths: /${SEARCHPATHS:config-repo}
+          searchPaths: ${SEARCHPATHS:/config-repo}
 #          username: yourName
 #          password: yourPassword
       lable: ${LABEL:master}
 #      fail-fast: true
+    bus:
+      enabled: true
+      trace:
+        enabled: true
 management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: bus-refresh
