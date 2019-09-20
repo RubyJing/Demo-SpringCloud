@@ -3,6 +3,7 @@ spring:
     name: user
   cloud:
     config:
+      uri: http://localhost:8888/
       name: eureka-user
       label: master
       profile: test
