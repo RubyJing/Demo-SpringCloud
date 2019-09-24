@@ -14,7 +14,7 @@ spring:
   application:
     name: eureka-server
   rabbitmq:
-    host: ${RABBIT_MQ_HOST:198.13.45.205}
+    host: ${RABBIT_MQ_HOST:39.108.153.211}
     port: ${RABBIT_MQ_PORT:5672}
     username: ${RABBIT_MQ_USERNAME:jean}
     password: ${RABBIT_MQ_PASSWORD:123456}

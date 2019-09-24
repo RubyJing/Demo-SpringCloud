@@ -15,9 +15,9 @@ spring:
     username: ${RABBIT_MQ_USERNAME:guest}
     password: ${RABBIT_MQ_PASSWORD:guest}
   datasource:
-    url: jdbc:${DATASOURCE_DB:mysql}://${DATASOURCE_HOST:198.13.45.205}:${DATASOURCE_PORT:3306}/springCloud
-    username: ${DATASOURCE_USERNAME:root}
-    password: ${DATASOURCE_PASSWORD:zjp123}
+    url: jdbc:${DATASOURCE_DB:mysql}://${DATASOURCE_HOST:39.108.153.211}:${DATASOURCE_PORT:3306}/springCloud
+    username: ${DATASOURCE_USERNAME:test}
+    password: ${DATASOURCE_USERNAME:Jean123.456}
     driver-class-name: ${DATASOURCE_DRIVER:com.mysql.jdbc.Driver}
   zipkin:
     enabled: true
