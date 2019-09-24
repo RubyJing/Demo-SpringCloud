@@ -12,9 +12,10 @@
     <description>Demo Center Monitor project for Spring Boot</description>
 
     <parent>
+        <artifactId>webapp-parent</artifactId>
         <groupId>com.springboot.cloud</groupId>
-        <artifactId>cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../webapps/webapp-parent/pom.xml</relativePath>
     </parent>
 
     <modules>
