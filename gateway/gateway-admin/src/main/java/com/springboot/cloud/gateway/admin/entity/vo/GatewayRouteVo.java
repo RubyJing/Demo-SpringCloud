@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @Slf4j
 public class GatewayRouteVo extends BaseVo {
-    private Long id;
+    private String id;
     private String uri;
     private Integer order;
     private List<FilterDefinition> filters = new ArrayList<>();
