@@ -1,0 +1,61 @@
+server:
+  port: 8022
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_ZONE_HOST:localhost}:${EUREKA_ZONE_PORT:8761}/eureka/
+  #spring boot admin设置权限，故需要通过账号密码获取注册信息
+  instance:
+    metadata-map:
+      user.name: admin
+      user.password: 123456
+      #健康检查
+#    health-check-url-path: /actuator/health
+#    lease-renewal-interval-in-seconds: 10
+
+spring:
+  application:
+    name: admin
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:39.108.153.211}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USERNAME:jean}
+    password: ${RABBIT_MQ_PASSWORD:123456}
+  redis:
+    host: ${REDIS_HOST:39.108.153.211}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:56155481}
+  #spring boot admin的登陆账号和密码配置
+  security:
+    user:
+      name: admin
+      password: 123456
+  #通过rabbit MQ将日志发给zipkin
+  zipkin:
+    enabled: true
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1.0
+  #邮箱报警->服务不健康或者下线会给指定邮箱发送邮件
+#  mail:
+#    host: ${MAIL_HOST:smtp.163.com}
+#    username: ${MAIL_USERNAME:rubyjing0815@163.com}
+#    password: ${MAIL_PASSWORD:rubyjing19950815}
+#  boot:
+#    admin:
+#      notify:
+#        mail:
+#          to: ${MAIL_TO:976235684@qq.com}
+#          from: ${MAIL_FROM:rubyjing0815@163.com}
+#日志相关配置
+logging:
+  level:
+    org.springframework.security: DEBUG
+  path: logs/
+  file:
+    max-size: 1GB
+
+
