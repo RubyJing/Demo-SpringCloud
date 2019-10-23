@@ -7,21 +7,10 @@ spring:
   cloud:
     nacos:
       #nacos服务发现
-      #nacos服务发现
       discovery:
         server-addr: ${REGISTER_HOST:localhost}:${REGISTER_PORT:8848}
 #        namespace: 5543b251-72a5-4f6c-8607-f6ba4d691d67
         #访问springBootAdmin的账号密码
-        metadata:
-          user:
-            name: admin
-            password: 123456
-#        namespace: 5543b251-72a5-4f6c-8607-f6ba4d691d67
-        #访问springBootAdmin的账号密码
-        metadata:
-          user:
-            name: admin
-            password: 123456
         metadata:
           user:
             name: admin
