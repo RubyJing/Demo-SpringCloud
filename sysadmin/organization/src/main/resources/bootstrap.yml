@@ -1,0 +1,36 @@
+server:
+  port: 8010
+
+spring:
+  application:
+    name: organization
+  cloud:
+    nacos:
+      #nacos服务发现
+         #nacos服务发现
+      #nacos服务发现
+      discovery:
+        server-addr: ${REGISTER_HOST:localhost}:${REGISTER_PORT:8848}
+#        namespace: 5543b251-72a5-4f6c-8607-f6ba4d691d67
+        #访问springBootAdmin的账号密码
+        metadata:
+          user:
+            name: admin
+            password: 123456
+#        namespace: 5543b251-72a5-4f6c-8607-f6ba4d691d67
+        #访问springBootAdmin的账号密码
+        metadata:
+          user:
+            name: admin
+            password: 123456
+        #namespace: 5543b251-72a5-4f6c-8607-f6ba4d691d67
+      #nacos服务配置中心
+      config:
+        server-addr: ${REGISTER_HOST:localhost}:${REGISTER_PORT:8848}
+        file-extension: yml
+#        namespace: 5543b251-72a5-4f6c-8607-f6ba4d691d67
+#        group: DEFAULT_GROUP
+      #sentinel熔断器监控平台
+      sentinel:
+        transport:
+          dashboard: ${SENTINEL_DASHBOARD_HOST:127.0.0.1}:${SENTINEL_DASHBOARD_PORT:8021}

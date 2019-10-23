@@ -3,26 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gateway-admin</artifactId>
+    <groupId>com.springboot.cloud</groupId>
+    <artifactId>bus-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>gateway-admin</name>
-    <description>Demo Gateway Admin project for Spring Cloud</description>
+    <name>bus-server</name>
+    <description>Demo project for Spring Cloud Bus</description>
 
     <parent>
-        <artifactId>webapp-parent</artifactId>
         <groupId>com.springboot.cloud</groupId>
+        <artifactId>center</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../webapps/webapp-parent/pom.xml</relativePath>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
@@ -47,5 +40,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

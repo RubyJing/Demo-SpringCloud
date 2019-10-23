@@ -18,7 +18,6 @@
     </parent>
 
     <modules>
-        <module>config-bus-server</module>
-        <module>eureka</module>
+        <module>bus-server</module>
     </modules>
 </project>

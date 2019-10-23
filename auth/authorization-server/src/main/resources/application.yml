@@ -1,14 +1,4 @@
-server:
-  port: 8000
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_ZONE_HOST:localhost}:${EUREKA_ZONE_PORT:8761}/eureka/
-
 spring:
-  application:
-    name: authorization-server
   rabbitmq:
     host: ${RABBIT_MQ_HOST:39.108.153.211}
     port: ${RABBIT_MQ_PORT:5672}
@@ -57,6 +47,11 @@ management:
     web:
       exposure:
         include: '*'
+    health:
+      sensitive: false #关闭过滤敏感信息
+  endpoint:
+    health:
+      show-details: ALWAYS  #显示详细信息
 
 mybatis:
   configuration:

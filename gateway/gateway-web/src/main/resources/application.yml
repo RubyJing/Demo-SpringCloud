@@ -1,14 +1,4 @@
-server:
-  port: ${SERVER_PORT:8443}
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_ZONE_HOST:localhost}:${EUREKA_ZONE_PORT:8761}/eureka/
-
 spring:
-  application:
-    name: ${GATEWAY_NAME:gateway-web}
   rabbitmq:
     host: ${RABBIT_MQ_HOST:39.108.153.211}
     port: ${RABBIT_MQ_PORT:5672}
@@ -35,10 +25,6 @@ spring:
         signingKey: 123456
   cloud:
     gateway:
-#      discovery:
-#        locator:
-#          enabled: true #表明网关开启服务注册和发现的功能，服务网关自动根据服务为每一个服务创建一个路由
-#          lower-case-service-id: true #将服务名配置为小写
       default-filters:
         - name: Retry
           args:
@@ -56,13 +42,18 @@ spring:
 gate:
   ignore:
     authentication:
-      startWith: /oauth,/open,/username
+      startWith: /oauth,/open,/v2/api-docs
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+    health:
+      sensitive: false #关闭过滤敏感信息
+  endpoint:
+    health:
+      show-details: ALWAYS  #显示详细信息
 
 logging:
   level:

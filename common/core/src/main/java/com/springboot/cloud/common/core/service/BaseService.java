@@ -1,5 +1,7 @@
 package com.springboot.cloud.common.core.service;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+
 import java.util.List;
 
 /**
@@ -9,8 +11,6 @@ import java.util.List;
  */
 public interface BaseService<T> {
     int add(T entity);
-
-    int delete(long id);
 
     int update(T entity);
 

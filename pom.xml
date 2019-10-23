@@ -16,16 +16,14 @@
         <module>center</module>
         <!-- 中心包，非服务 -->
         <module>common</module>
+        <!-- 所有业务服务的父pom -->
         <module>webapps</module>
-        <module>demos</module>
         <!-- 监控模块:hystrix-dashboard仪表盘，turbine集群监控 -->
         <module>monitor</module>
         <!-- 认证安全模块:authentication-server签权，authorization-server授权 -->
-        <module>oauth</module>
+        <module>auth</module>
         <!-- 网关模块:gateway-admin用于网关管理,gateway-web网关 -->
         <module>gateway</module>
-        <!-- 系统管理模块 -->
-        <module>sysadmin</module>
     </modules>
 
     <dependencyManagement>
@@ -42,6 +40,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>Greenwich.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.1.0.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -71,11 +76,13 @@
     </repositories>
 
     <pluginRepositories>
+        <!-- spring仓库 -->
         <pluginRepository>
             <id>repository.spring.release</id>
             <name>Spring GA Repository</name>
             <url>https://repo.spring.io/plugins-release/</url>
         </pluginRepository>
+        <!-- swagger2markup+asciidoctorj生成html和pdf文档的2个远程仓库 -->
         <pluginRepository>
             <id>jcenter-snapshots</id>
             <name>jcenter</name>
@@ -104,20 +111,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--注册中心-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!--断路器-->
+        <!--nacos配置中心-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-nacos-config</artifactId>
         </dependency>
-        <!--集群监控消息队列-->
+        <!--熔断降级 sentinel-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
         <!--日志跟踪-->
         <dependency>
@@ -136,11 +142,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-        </dependency>
-        <!--Spring Cloud Config 客户端依赖-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <!--热加载-->
         <dependency>
@@ -163,19 +164,19 @@
             <scope>test</scope>
         </dependency>
         <!--test数据库-->
-        <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- 用于maven子项目打包插件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.4.RELEASE</version>
                 <executions>
                     <execution>
                         <goals>

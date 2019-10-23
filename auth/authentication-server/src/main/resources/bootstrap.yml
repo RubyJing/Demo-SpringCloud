@@ -1,0 +1,25 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: authentication-server
+  cloud:
+    nacos:
+      #nacos服务发现
+      #nacos服务发现
+      discovery:
+        server-addr: ${REGISTER_HOST:localhost}:${REGISTER_PORT:8848}
+#        namespace: 5543b251-72a5-4f6c-8607-f6ba4d691d67
+        #访问springBootAdmin的账号密码
+        metadata:
+          user:
+            name: admin
+            password: 123456
+      #nacos服务配置中心
+      config:
+        server-addr: ${REGISTER_HOST:localhost}:${REGISTER_PORT:8848}
+        file-extension: yml
+      #sentinel熔断器监控平台
+      sentinel:
+        transport:
+          dashboard: ${SENTINEL_DASHBOARD_HOST:localhost}:${SENTINEL_DASHBOARD_PORT:8021}
